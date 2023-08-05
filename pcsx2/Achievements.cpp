@@ -2147,6 +2147,11 @@ void Achievements::PokeMemory(unsigned address, unsigned num_bytes, void* ud, un
 	}
 }
 
+s32 Achievements::GetNotificationsDuration()
+{
+	return EmuConfig.Achievements.NotificationsDuration;
+}
+
 #ifdef ENABLE_RAINTEGRATION
 
 #include "RA_Consoles.h"
@@ -2301,11 +2306,6 @@ unsigned int Achievements::RAIntegration::RACallbackReadBlock(unsigned int addre
 void Achievements::RAIntegration::RACallbackWriteMemory(unsigned int address, unsigned char value)
 {
 	PokeMemory(address, sizeof(value), nullptr, static_cast<unsigned>(value));
-}
-
-s32 Achievements::GetNotificationsDuration()
-{
-	return EmuConfig.Achievements.NotificationsDuration;
 }
 
 #endif // ENABLE_RAINTEGRATION
